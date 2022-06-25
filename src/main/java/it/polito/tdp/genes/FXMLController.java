@@ -7,6 +7,7 @@ package it.polito.tdp.genes;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import it.polito.tdp.genes.model.GeneAdiacente;
 import it.polito.tdp.genes.model.Genes;
 import it.polito.tdp.genes.model.Model;
 import javafx.event.ActionEvent;
@@ -30,7 +31,7 @@ public class FXMLController {
     private Button btnCreaGrafo; // Value injected by FXMLLoader
 
     @FXML // fx:id="cmbGeni"
-    private ComboBox<?> cmbGeni; // Value injected by FXMLLoader
+    private ComboBox<Genes> cmbGeni; // Value injected by FXMLLoader
 
     @FXML // fx:id="btnGeniAdiacenti"
     private Button btnGeniAdiacenti; // Value injected by FXMLLoader
@@ -46,13 +47,17 @@ public class FXMLController {
 
     @FXML
     void doCreaGrafo(ActionEvent event) {
+    	model.creaGrafo();
     	
-
+    	cmbGeni.getItems().addAll(model.getGeni());
     }
 
     @FXML
     void doGeniAdiacenti(ActionEvent event) {
-
+    	
+    	for(GeneAdiacente g : model.getAdiacenti(cmbGeni.getValue())) {
+    		txtResult.appendText(g+"");
+    	}
     	
     }
 
