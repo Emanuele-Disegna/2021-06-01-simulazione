@@ -51,8 +51,8 @@ public class Model {
 	public List<GeneAdiacente> getAdiacenti(Genes g) {
 		List<GeneAdiacente> ret = new ArrayList<>();
 		
-		for(Genes gg : Graphs.neighborListOf(grafo, idMap.get("G234194"))) {
-			GeneAdiacente gene = new GeneAdiacente(gg, grafo.getEdgeWeight(grafo.getEdge(gg, idMap.get("G234194"))));
+		for(Genes gg : Graphs.neighborListOf(grafo, g)) {
+			GeneAdiacente gene = new GeneAdiacente(gg, grafo.getEdgeWeight(grafo.getEdge(gg, g)));
 			ret.add(gene);
 		}
 		
